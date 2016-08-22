@@ -1,5 +1,5 @@
 # Pushes to master branch result in an image being built and pushed to
-# Docker Hub as reddit/reddit-py:latest.
+# Docker Hub as reddit/reddit-nodejs:latest.
 publish:
   docker:
     username: $$DOCKERHUB_USERNAME
