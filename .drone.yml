@@ -1,0 +1,18 @@
+# Pushes to master branch result in an image being built and pushed to
+# Docker Hub as reddit/reddit-py:latest.
+publish:
+  docker:
+    username: $$DOCKERHUB_USERNAME
+    password: $$DOCKERHUB_PASSWORD
+    email: sysops@reddit.com
+    repo: reddit/reddit-nodejs
+    tag: latest
+    file: Dockerfile
+    when:
+      branch: master
+
+# These plugins are triggered after a build failure/success.
+notify:
+  slack:
+    webhook_url: $$CI_SLACK_WEBHOOK_URL
+    channel: ci-notifications
