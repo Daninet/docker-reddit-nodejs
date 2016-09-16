@@ -5,7 +5,7 @@ publish:
     username: $$QUAY_USERNAME
     password: $$QUAY_PASSWORD
     email: sysops@reddit.com
-    repo: reddit/reddit-py
+    repo: reddit/reddit-nodejs
     registry: quay.io
     tag: latest
     file: Dockerfile
