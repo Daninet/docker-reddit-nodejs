@@ -1,11 +1,12 @@
 # Pushes to master branch result in an image being built and pushed to
-# Docker Hub as reddit/reddit-nodejs:latest.
+# Quay as quay.io/reddit/reddit-nodejs:latest.
 publish:
   docker:
-    username: $$DOCKERHUB_USERNAME
-    password: $$DOCKERHUB_PASSWORD
+    username: $$QUAY_USERNAME
+    password: $$QUAY_PASSWORD
     email: sysops@reddit.com
-    repo: reddit/reddit-nodejs
+    repo: reddit/reddit-py
+    registry: quay.io
     tag: latest
     file: Dockerfile
     when:
