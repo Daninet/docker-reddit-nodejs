@@ -9,6 +9,6 @@ RUN apt-get update && \
 
 RUN apt-get install -y nodejs git-core
 
-RUN npm install -g yarn@0.21.3
+RUN npm install -g yarn@0.23.1
 
 CMD [""]
