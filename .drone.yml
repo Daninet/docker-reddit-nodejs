@@ -7,10 +7,10 @@ publish:
     email: sysops@reddit.com
     repo: reddit/reddit-nodejs
     registry: quay.io
-    tag: yarn-0.23.1
+    tag: yarn-0.23.2
     file: Dockerfile
     when:
-      branch: yarn-0.23.1
+      branch: yarn-0.23.2
 
 # These plugins are triggered after a build failure/success.
 notify:
