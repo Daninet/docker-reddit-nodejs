@@ -1,5 +1,20 @@
 pipeline:
-  publish-docker-image:
+  # Push image to quay for local devs
+  publish-docker-quay-image:
+    image: plugins/docker
+    registry: quay.io
+    repo: quay.io/reddit/reddit-desktop
+    tag: ${DRONE_BRANCH}
+    dockerfile: Dockerfile.staging
+    secrets:
+      - source: quay_docker_username
+        target: docker_username
+      - source: quay_docker_password
+        target: docker_password
+     when:
+      event: [ tag ]
+
+  publish-docker-ecr-image:
     image: 258875347723.dkr.ecr.us-east-1.amazonaws.com/drone-plugin-docker-ecr
     repo: 258875347723.dkr.ecr.us-east-1.amazonaws.com/reddit-nodejs
     registry: 258875347723.dkr.ecr.us-east-1.amazonaws.com
@@ -8,16 +23,16 @@ pipeline:
     when:
      event: [ tag ]
 
-  notify:
-    image: plugins/slack
-    channel: desktop-salon
-    secrets: [ SLACK_WEBHOOK ]
-    template: >
-      {{#success build.status}}
-        📦 Packaged <{{build.link}}|{{repo.name}}@{{build.tag}}>
-      {{else}}
-        🚨 *Failed* to package 📦 <{{build.link}}|{{repo.name}}@{{build.tag}}>
-      {{/success}}
-    when:
-      status: [ success, failure ]
-      event: [ tag ]
+  # notify:
+  #   image: plugins/slack
+  #   channel: desktop-salon
+  #   secrets: [ SLACK_WEBHOOK ]
+  #   template: >
+  #     {{#success build.status}}
+  #       📦 Packaged <{{build.link}}|{{repo.name}}@{{build.tag}}>
+  #     {{else}}
+  #       🚨 *Failed* to package 📦 <{{build.link}}|{{repo.name}}@{{build.tag}}>
+  #     {{/success}}
+  #   when:
+  #     status: [ success, failure ]
+  #     event: [ tag ]
