@@ -2,18 +2,18 @@
 # Quay as quay.io/reddit/reddit-nodejs:latest.
 publish:
   docker:
-    username: $$QUAY_USERNAME
-    password: $$QUAY_PASSWORD
-    email: sysops@reddit.com
-    repo: reddit/reddit-nodejs
-    registry: quay.io
+    username: admin
+    password: password
+    email: danibiro93@gmail.com
+    repo: Daninet/docker-reddit-nodejs
+    registry: localhost
     tag: latest
     file: Dockerfile
     when:
       branch: master
 
 # These plugins are triggered after a build failure/success.
-notify:
-  slack:
-    webhook_url: $$CI_SLACK_WEBHOOK_URL
-    channel: ci-notifications
+#notify:
+#  slack:
+#    webhook_url: $$CI_SLACK_WEBHOOK_URL
+#    channel: ci-notifications
