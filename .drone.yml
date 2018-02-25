@@ -1,19 +1,6 @@
-
 pipeline:
-  publish-api-docker:
-    image: plugins/docker:1.12
-    username: admin
-    password: password
-    email: danibiro93@gmail.com
-    repo: Daninet/docker-reddit-nodejs
-    registry: localhost
-    tags:
-      - latest
-    dockerfile: ./Dockerfile
-    context: ./
-
-# These plugins are triggered after a build failure/success.
-#notify:
-#  slack:
-#    webhook_url: $$CI_SLACK_WEBHOOK_URL
-#    channel: ci-notifications
+  run-tests:
+    image: node:8.9.4
+    commands:
+      - cd ./api && npm i --quiet
+      - npm test
