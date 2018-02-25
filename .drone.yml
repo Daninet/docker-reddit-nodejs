@@ -1,16 +1,16 @@
-# Pushes to master branch result in an image being built and pushed to
-# Quay as quay.io/reddit/reddit-nodejs:latest.
-publish:
-  docker:
+
+pipeline:
+  publish-api-docker:
+    image: plugins/docker:1.12
     username: admin
     password: password
     email: danibiro93@gmail.com
     repo: Daninet/docker-reddit-nodejs
     registry: localhost
-    tag: latest
-    file: Dockerfile
-    when:
-      branch: master
+    tags:
+      - latest
+    dockerfile: ./Dockerfile
+    context: ./
 
 # These plugins are triggered after a build failure/success.
 #notify:
